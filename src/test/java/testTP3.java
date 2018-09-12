@@ -36,8 +36,8 @@ public class testTP3 {
         HomePage homePage = new HomePage(driver);
         homePage.rechercheEnter("Bordeaux");
 
-        //ResultPage resultsPage = new ResultPage();
-        //Assert.assertThat(resultsPage.getResult(0), is ("Site officiel de la ville de Bordeaux | Bordeaux"));
+        ResultPage resultsPage = new ResultPage(driver);
+        Assert.assertThat(resultsPage.getResult(0), is ("Site officiel de la ville de Bordeaux | Bordeaux"));
     }
 
     @Test
@@ -46,16 +46,20 @@ public class testTP3 {
         HomePage homePage = new HomePage(driver);
         homePage.rechercheClick1("Bordeaux");
 
-        //ResultPage resultsPage = new ResultPage();
-        //Assert.assertThat(resultsPage.getResult(0), is ("Site officiel de la ville de Bordeaux | Bordeaux"));
+        ResultPage resultsPage = new ResultPage(driver);
+        //ici on va comparer avec le 2ème résultat de la page
+        Assert.assertThat(resultsPage.getResult(1), is ("Bordeaux — Wikipédia"));
     }
     @Test
     public void testClick()
     {
+        //sur ma page accueil
         HomePage homePage = new HomePage(driver);
         homePage.rechercheClick2("Bordeaux");
 
-        //ResultPage resultsPage = new ResultPage();
-        //Assert.assertThat(resultsPage.getResult(0), is ("Site officiel de la ville de Bordeaux | Bordeaux"));
+        //puis sur ma page résultats
+        ResultPage resultsPage = new ResultPage(driver);
+        //on va comparer avec le 7eme résultat de la page de recheche
+        Assert.assertThat(resultsPage.getResult(6), is ("Bordeaux - Sud Ouest.fr"));
     }
 }

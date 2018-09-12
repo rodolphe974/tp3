@@ -55,14 +55,16 @@ public class testTP3 {
         //ici on va comparer avec le 2ème résultat de la page
         Assert.assertThat(resultsPage.getResult(1), is ("Bordeaux — Wikipédia"));
     }
+
+    //avec un codage un peu différent...
     @Test
     public void testClick()
     {
         //sur ma page accueil
         HomePage homePage = new HomePage(driver);
-        ResultPage resultsPage = homePage.rechercheClick2("Bordeaux");
-
+        String result = homePage.rechercheClick2("Bordeaux").getResult(6);
         //on va comparer avec le 7eme résultat de la page de recheche
-        Assert.assertThat(resultsPage.getResult(6), is ("Bordeaux - Sud Ouest.fr"));
+
+        Assert.assertThat(result, is ("Site officiel de Bordeaux Métropole - Bordeaux Métropole"));
     }
 }

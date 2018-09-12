@@ -1,3 +1,4 @@
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +18,10 @@ public class HomePage {
     // identique à  @FindBy(className = "lsb")
     WebElement boutonRecherche;
 
+    @FindBy(name = "btnK")
+    // identique à  @FindBy(className = "lsb")
+    WebElement boutonRecherche2;
+
     //constructeur
     public HomePage(WebDriver driver)
     {
@@ -25,8 +30,21 @@ public class HomePage {
     }
 
     //une methode pour utiliser la champ recherche de la page home
-    public void recherche (String text)
+    public void rechercheEnter (String text)
     {
-
+        barreRecherche.sendKeys(text);
+        barreRecherche.sendKeys(Keys.ENTER);
+    }
+    public void rechercheClick1 (String text)
+    {
+        barreRecherche.sendKeys(text);
+        barreRecherche.sendKeys(Keys.ARROW_DOWN);
+        boutonRecherche.click();
+    }
+    public void rechercheClick2 (String text)
+    {
+        barreRecherche.sendKeys(text);
+        logo.click();
+        boutonRecherche2.click();
     }
 }

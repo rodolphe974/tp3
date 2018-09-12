@@ -21,6 +21,7 @@ public class testTP3 {
         //on ouvre le navigateur en grand
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+
     }
 
     @After
@@ -30,12 +31,31 @@ public class testTP3 {
     }
 
     @Test
-    public void test1()
+    public void testEnter()
     {
         HomePage homePage = new HomePage(driver);
-        homePage.recherche("Bordeaux");
+        homePage.rechercheEnter("Bordeaux");
 
-        ResultPage resultsPage = new ResultPage();
-        Assert.assertThat(resultsPage.getResult(0), is ("Site officiel de la ville de Bordeaux | Bordeaux"));
+        //ResultPage resultsPage = new ResultPage();
+        //Assert.assertThat(resultsPage.getResult(0), is ("Site officiel de la ville de Bordeaux | Bordeaux"));
+    }
+
+    @Test
+    public void testClickRollMenu()
+    {
+        HomePage homePage = new HomePage(driver);
+        homePage.rechercheClick1("Bordeaux");
+
+        //ResultPage resultsPage = new ResultPage();
+        //Assert.assertThat(resultsPage.getResult(0), is ("Site officiel de la ville de Bordeaux | Bordeaux"));
+    }
+    @Test
+    public void testClick()
+    {
+        HomePage homePage = new HomePage(driver);
+        homePage.rechercheClick2("Bordeaux");
+
+        //ResultPage resultsPage = new ResultPage();
+        //Assert.assertThat(resultsPage.getResult(0), is ("Site officiel de la ville de Bordeaux | Bordeaux"));
     }
 }

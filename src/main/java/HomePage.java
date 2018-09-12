@@ -30,21 +30,24 @@ public class HomePage {
     }
 
     //une methode pour utiliser la champ recherche de la page home
-    public void rechercheEnter (String text)
+    public ResultPage rechercheEnter (String text)
     {
         barreRecherche.sendKeys(text);
         barreRecherche.sendKeys(Keys.ENTER);
+        return new ResultPage(driver);
     }
-    public void rechercheClick1 (String text)
+    public ResultPage rechercheClick1 (String text)
     {
         barreRecherche.sendKeys(text);
         barreRecherche.sendKeys(Keys.ARROW_DOWN);
         boutonRecherche.click();
+        return new ResultPage(driver);
     }
-    public void rechercheClick2 (String text)
+    public ResultPage rechercheClick2 (String text)
     {
         barreRecherche.sendKeys(text);
         logo.click();
         boutonRecherche2.click();
+        return new ResultPage(driver);
     }
 }

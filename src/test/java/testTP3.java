@@ -33,20 +33,25 @@ public class testTP3 {
     @Test
     public void testEnter()
     {
-        HomePage homePage = new HomePage(driver);
-        homePage.rechercheEnter("Bordeaux");
+        //Arrange
+        String expectedResult = "Site officiel de la ville de Bordeaux | Bordeaux";
 
-        ResultPage resultsPage = new ResultPage(driver);
-        Assert.assertThat(resultsPage.getResult(0), is ("Site officiel de la ville de Bordeaux | Bordeaux"));
+        //Act
+        HomePage homePage = new HomePage(driver);
+        //rechercheEnter me retourne la page de resultat...
+        ResultPage resultsPage = homePage.rechercheEnter("Bordeaux");
+        String result = resultsPage.getResult(0);
+
+        //Assert
+        Assert.assertThat(result, is(expectedResult));
     }
 
     @Test
     public void testClickRollMenu()
     {
         HomePage homePage = new HomePage(driver);
-        homePage.rechercheClick1("Bordeaux");
+        ResultPage resultsPage = homePage.rechercheClick1("Bordeaux");
 
-        ResultPage resultsPage = new ResultPage(driver);
         //ici on va comparer avec le 2ème résultat de la page
         Assert.assertThat(resultsPage.getResult(1), is ("Bordeaux — Wikipédia"));
     }
@@ -55,10 +60,8 @@ public class testTP3 {
     {
         //sur ma page accueil
         HomePage homePage = new HomePage(driver);
-        homePage.rechercheClick2("Bordeaux");
+        ResultPage resultsPage = homePage.rechercheClick2("Bordeaux");
 
-        //puis sur ma page résultats
-        ResultPage resultsPage = new ResultPage(driver);
         //on va comparer avec le 7eme résultat de la page de recheche
         Assert.assertThat(resultsPage.getResult(6), is ("Bordeaux - Sud Ouest.fr"));
     }
